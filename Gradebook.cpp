@@ -1,9 +1,10 @@
-#include "gradebook.h"
+#include "Gradebook.h"
 #include <vector>
 #include <string>
 #include <utility> //for pairs
 
 //constructor
+GradeBook::GradeBook(){};
 GradeBook::GradeBook (std::vector<std::string> category_vector, std::vector<std::string> name_vector, std::vector<int> points_earned_vector)
 {
     for (int i = 0; i < category_vector.size(); i++)
@@ -64,6 +65,7 @@ int GradeBook::get_assignment_points_total(std::string category_name)
 //for each of these, these return the points_earned and points_total.
 //The reason why is because I can reuse code.
 //we will do this using a pair<int><int>. First will be points_earned and second will be points_total
+
 std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
 {
     //we need to create an index so we can get the matching category and points_earned
@@ -85,6 +87,7 @@ std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
 
 
 }
+
 std::pair<int, int> GradeBook::category_grade(std::string individual_category)
 {
     int total_points_earned = 0;
@@ -106,6 +109,7 @@ std::pair<int, int> GradeBook::category_grade(std::string individual_category)
 
     return std::make_pair(total_points_earned,category_points_total);
 }
+
 std::pair<int, int> GradeBook::course_total_grade()
 {
     int total_points_earned = 0;
@@ -116,3 +120,6 @@ int GradeBook::turn_to_percentage(int points_earned, int points_total)
 {
     //
 }
+
+
+
