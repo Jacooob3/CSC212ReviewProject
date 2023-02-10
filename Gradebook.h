@@ -10,6 +10,8 @@ private:
     std::vector<std::string> name;
 
 public:
+    //default constructor
+    GradeBook::GradeBook();
     //constructor
     GradeBook (std::vector<std::string> category_vector, std::vector<std::string> name_vector, std::vector<int> points_earned_vector);
 
@@ -25,7 +27,7 @@ public:
     std::pair<int, int> category_grade(std::string individual_category);
     std::pair<int, int> course_total_grade();
     //turns a set of points_earend and points_total into a percentage;
-    int turn_to_percentage(int points_earned, int points_total);
+    int turn_to_percentage(int grade_points_earned, int grade_points_total);
 
     //grabs the point total of a specific category
     int get_assignment_points_total(std::string category_name);
