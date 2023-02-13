@@ -4,7 +4,9 @@
 #include <utility> //for pairs
 
 //constructor
-GradeBook::GradeBook(){};
+GradeBook::GradeBook(){
+    //
+};
 GradeBook::GradeBook (std::vector<std::string> category_vector, std::vector<std::string> name_vector, std::vector<int> points_earned_vector)
 {
     for (int i = 0; i < category_vector.size(); i++)
@@ -70,7 +72,7 @@ std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
 {
     //we need to create an index so we can get the matching category and points_earned
     int index = 0;
-    int points_total = 0;
+    int individual_points_total = 0;
     for (int i = 0; i < name.size(); i++) //idk why it says the i++ part is unreachable code
     {
         if (name[i] == individual_name)
@@ -79,9 +81,9 @@ std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
             break;
         }
 
-        int points_total = this->get_assignment_points_total(category[i]);
+        individual_points_total = this->get_assignment_points_total(category[index]);
 
-        return std::make_pair((points_earned[index]),points_total);
+        return std::make_pair((points_earned[index]),individual_points_total);
     }
 
 
@@ -110,16 +112,33 @@ std::pair<int, int> GradeBook::category_grade(std::string individual_category)
     return std::make_pair(total_points_earned,category_points_total);
 }
 
+//will essentially run the sum of category_grade for every category. Perhaps I should make
 std::pair<int, int> GradeBook::course_total_grade()
 {
-    int total_points_earned = 0;
-    int total_points_total = 0;
+    const char* category_list[] = {"Lab", "Assignment", "Project1", "Project2", "Exam"};
+    std::pair<int, int> total_course_score; //first is points_earned, and second is points_total
+    std::pair<int, int> individual_category_score;
+    total_course_score.first = 0;
+    total_course_score.second = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        individual_category_score = category_grade(category_list[i]);
+        total_course_score.first += individual_category_score.first;
+        total_course_score.second += individual_category_score.second;
+    }
+
+    return total_course_score;
+
+
+
 }
 //turns a set of points_earned and points_total into a percentage;
-int GradeBook::turn_to_percentage(int points_earned, int points_total)
+int GradeBook::turn_to_percentage(int grade_points_earned, int grade_points_total)
 {
-    //
+    float ratio = grade_points_earned / grade_points_total;
+    ratio *= 100;
+    int grade = (int) ratio;
+    return grade;
 }
-
 
 
