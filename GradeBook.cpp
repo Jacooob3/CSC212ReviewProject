@@ -1,16 +1,15 @@
-#include "Gradebook.h"
+#include "GradeBook.h"
+#include <iostream>
 #include <vector>
 #include <string>
 #include <utility> //for pairs
 
 //constructor
 GradeBook::GradeBook(){
-    //
-};
-GradeBook::GradeBook (std::vector<std::string> category_vector, std::vector<std::string> name_vector, std::vector<int> points_earned_vector)
-{
-    for (int i = 0; i < category_vector.size(); i++)
-    {
+    std::vector<int> grades;
+}
+void GradeBook::GradeBook (std::vector<std::string> category_vector, std::vector<std::string> name_vector, std::vector<int> points_earned_vector){
+    for (int i = 0; i < category_vector.size(); i++){
         this->category.push_back(category_vector[i]);
         this->name.push_back(name_vector[i]);
         this->points_earned.push_back(points_earned_vector[i]);
@@ -85,9 +84,6 @@ std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
 
         return std::make_pair((points_earned[index]),individual_points_total);
     }
-
-
-
 }
 
 std::pair<int, int> GradeBook::category_grade(std::string individual_category)
@@ -126,10 +122,7 @@ std::pair<int, int> GradeBook::course_total_grade()
         total_course_score.first += individual_category_score.first;
         total_course_score.second += individual_category_score.second;
     }
-
     return total_course_score;
-
-
 
 }
 //turns a set of points_earned and points_total into a percentage;
@@ -140,5 +133,3 @@ int GradeBook::turn_to_percentage(int grade_points_earned, int grade_points_tota
     int grade = (int) ratio;
     return grade;
 }
-
-
