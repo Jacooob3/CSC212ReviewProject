@@ -1,12 +1,15 @@
+#pragma once
+#include <iostream>
 #include <vector>
 #include <string>
 #include <utility> //for pairs
 #ifndef GRADEBOOK_H
 #define GRADEBOOK_H
+
 class GradeBook{
 private:
     std::vector<std::string> category;
-    std::vector<int>points_earned;
+    std::vector<int> points_earned;
     std::vector<std::string> name;
 
 public:
