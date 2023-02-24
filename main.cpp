@@ -3,7 +3,7 @@
 #include <fstream>
 #include <ostream>
 #include <sstream>
-#include "Gradebook.h"
+#include "GradeBook.h"
 
 std::string openFile(){
     std::string file_name;
@@ -21,7 +21,6 @@ std::string openFile(){
         }
     }
 }
-
 
 void extractCSV(std::string file_name, GradeBook &Grade) {
     std::fstream file;
@@ -47,7 +46,7 @@ int main() {
     GradeBook Grade;
     //Open file
     std::string file_name = openFile();
-    //extract data into  Grade
+    //extract data into Grade
     extractCSV(file_name, Grade);
     //Ask user for options or quit
     while(boo){
@@ -74,12 +73,4 @@ int main() {
             std::cout<< "Unable to read input, Try Again \n";
         }
     }
-    /*
-     * GradeBook.getLabs();
-    GradeBook.getHomework();
-    GradeBook.getFinal();
-    GradeBook.getProject();
-    GradeBook.getMEC();
-    GradeBook.calculateGrade();
-    */
 }
