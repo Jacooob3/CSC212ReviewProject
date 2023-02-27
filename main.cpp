@@ -74,6 +74,7 @@ int main() {
         std::cout<<"If you want to access your grades by category enter 'category'\n";
         std::cout<<"If you want to access your overall grade enter 'overall'\n";
         std::cout<<"If you want to change a grade enter 'changegrade'\n";
+        std::cout<<"If you want to add grades to Gradebook enter 'add'\n";
         std::cout<<"If you want to quit, enter 'quit'\n";
         std::cin >> inp;
         transform(inp.begin(), inp.end(), inp.begin(), ::toupper);
@@ -81,6 +82,21 @@ int main() {
             std::string null_string = ""; //making an empty string that allows print methods to differentiate between terminal and file output
             if (inp == "ASSIGNMENT") {
                 Grade.printAssignment(null_string);
+            } else if (inp == "ADD") {
+                std::string name;
+                std::string cat;
+                int grade;
+                std::cout << "Enter assignment name: \n";
+                std::cin >> name;
+                Grade.name_add_on(name);
+                std::cout << "Enter assignment category: \n";
+                std::cin >> cat;
+                Grade.category_add_on(cat);
+                std::cout << "Enter assignment grade: \n";
+                std::cin >> grade;
+                Grade.points_earned_add_on(grade);
+                Grade.order_category();
+                Grade.printGradeBook(file_name);
             } else if (inp == "SEARCHASSIGNMENT") { //searching for specific assignment
                 std::string assign_name;
                 std::cout << "Enter assignment name:" << "\n";
@@ -129,6 +145,21 @@ int main() {
                 std::cout << "Enter assignment name:" << "\n";
                 std::cin >> assign_name;
                 Grade.printIndividualAssignment(out_file, assign_name);
+            } else if (inp == "ADD") {
+                std::string name;
+                std::string cat;
+                int grade;
+                std::cout << "Enter assignment name: \n";
+                std::cin >> name;
+                Grade.name_add_on(name);
+                std::cout << "Enter assignment category: \n";
+                std::cin >> cat;
+                Grade.category_add_on(cat);
+                std::cout << "Enter assignment grade: \n";
+                std::cin >> grade;
+                Grade.points_earned_add_on(grade);
+                Grade.order_category();
+                Grade.printGradeBook(file_name);
             } else if (inp == "CATEGORICAL" or inp == "CATEGORY") {
                 Grade.printCategory(out_file);
             } else if (inp == "OVERALL") {
