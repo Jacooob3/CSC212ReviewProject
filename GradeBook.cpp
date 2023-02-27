@@ -37,7 +37,16 @@ void GradeBook::order_category() {
         }
     }
     for (int i = 0; i < temp.size(); i++) {
-        this->unique_category.push_back(temp[i]);
+        bool test = true;
+        for(int j = 0; j < unique_category.size(); j++) {
+            if (temp[i] == unique_category[j]) {
+                test = false;
+                break;
+            }
+        }
+        if (test) {
+            this->unique_category.push_back(temp[i]);
+        }
     }
 
 }
@@ -121,7 +130,7 @@ void GradeBook::printAssignment(std::string file_name){
         for (int i = 0; i < size; i++) {
             std::pair<int, int> temp = individual_grade(ordered_list[i]);
             myfile << ordered_list[i] << " , " << temp.first << "/" << temp.second << "\t" << "or "
-                      << turn_to_percentage(temp.first, temp.second) << "%" << "\n";
+                   << turn_to_percentage(temp.first, temp.second) << "%" << "\n";
         }
         myfile.close();
     }
