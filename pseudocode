@@ -1,1 +1,84 @@
 
+//main pseudo
+
+void individual(){
+	//get info from class
+	//print all necessary information
+	
+}
+
+
+void category(){
+	//get info from class
+	//print all necessary information
+}	
+
+
+void overall(){
+	//get info from class
+	//calculate
+	//print all necessary information
+}
+
+
+Void read_file() //not sure if this should be a function or should just be in main
+{
+-reads every line from the input file
+	-tokenize the string into name, category, and points_earned
+	Use the vector_push_back method to insert these into the private object vectors
+}
+
+
+int main(){
+	//
+//while loop until user inputs quit
+	//ask user input for either
+	//individual
+		-all grades within their respective categories and a course
+			overall
+	//category
+              -only category totals and course overall
+
+
+	//or overall
+		-only course overall 
+
+
+}
+
+//Gradebook Header
+	
+//Private and public classes used for project
+Private:
+	-string vector for categories
+	-string vector for names
+	-int vector for points_earned
+Public:
+-constructor (category_vector, name_vector, points_earned_vector)
+-ability to add onto one of the strings (there should be a method for
+       Every string [one for categories, one for names, one for points earned])
+		-essentially, the parameter is the value you want to push_back in it.
+	-individual_grade method (returns the points_earned and points_total of an individual grade)
+-catagory_grade(returns the percentage of the total grade of a category)
+-course_overall (returns the total overall grade)
+
+//Gradebook CPP
+-constructor
+-(do for loop [for i = 0; i < vector.size(); i++]). this->vector.push_back(vector[i])	
+-[category/name/points earned]_vector_append(value)
+	-this->[category/name/points earned]_vector.push_back(value);
+	(remember to make a method for all 3. So 3 functions of this)
+-individual_grade(name) //should this be void, int, or bool? Idk
+	-check category. (For exams, just label exam1 or exam2), this determines what grades_total is.
+	-percentage is ((points_earned/points_total) * 100)
+	-perhaps I should return total points_earned and total_points_total. Not sure though
+-category_grade(category)
+	-first do a loop that gathers all the points_earned from a category. (this list   will be a vector)
+	-add up all the points_earned from that list and then divide by the points_total of that category * the length of the string * 100
+	-perhaps it should return the total_points_earned and total_points_in_total so I can repurpose this code for course total
+-course total
+	-if I repurpose the category grade, I can just take the category grade for every category, then add up all the total_points_earned and add up all the total points_in_total. Maybe I could even return the total_points_earned and total_points_in_total
+-turn to percentage(points_earned, points_total)
+{
+	Return points_earned/points_total * 100; this is a function so I can repurpose other functions 
+}
