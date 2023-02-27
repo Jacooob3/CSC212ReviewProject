@@ -33,9 +33,9 @@ public:
     //for each of these, these return the points_earned and points_total.
     //The reason why is because I can reuse code.
     //we will do this using a pair<int><int>. First will be points_earned and second will be points_total
-    std::pair<int, int> individual_grade(std::string individual_name);
-    std::pair<int, int> category_grade(std::string individual_category);
-    std::pair<int, int> course_total_grade();
+    std::pair<int, int> float individual_grade(std::string individual_name);
+    std::pair<int, int> float category_grade(std::string individual_category);
+    std::pair<int, int> float course_total_grade();
     //turns a set of points_earend and points_total into a percentage;
     float turn_to_percentage(int grade_points_earned, int grade_points_total);
 
