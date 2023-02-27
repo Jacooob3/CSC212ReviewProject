@@ -84,15 +84,15 @@ int GradeBook::get_assignment_points_total(std::string category_name)
     switch(index)
     {
         case 0:
-            return 20;
+            return 20.0;
         case 1:
-            return 50;
+            return 50.0;
         case 2:
-            return 150;
+            return 150.0;
         case 3:
-            return 350;
+            return 350.0;
         case 4:
-            return 100;
+            return 100.0;
         default:
             break;
     }
@@ -228,7 +228,7 @@ std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
             index = i;
             individual_points_total = this->get_assignment_points_total(category[index]);
 
-            float individual_points_earned = individual_points_total*(points_earned[index]/float(100));
+            float individual_points_earned = individual_points_total*(points_earned[index]/float(100.0));
 
             return std::make_pair((int(individual_points_earned)),individual_points_total);
         }
@@ -253,7 +253,7 @@ std::pair<int, int> GradeBook::category_grade(std::string individual_category)
         total_points_earned += scores_per_category[i];
     }
     int category_points_total = this->get_assignment_points_total(individual_category);
-    float category_percent = float(total_points_earned)/float((100*scores_per_category.size())); //turning points earned in a category into percentage
+    float category_percent = float(total_points_earned)/float((100.0*scores_per_category.size())); //turning points earned in a category into percentage
     category_points_total*= scores_per_category.size(); //making sure the total points cover every project of that category;
     //std::cout << category_percent << "\n";
     int category_points = category_percent*float(category_points_total); //turning that percentage into points earned out of category total
@@ -282,7 +282,7 @@ std::pair<int, int> GradeBook::course_total_grade()
 float GradeBook::turn_to_percentage(int grade_points_earned, int grade_points_total)
 {
     float ratio = float(grade_points_earned) / float(grade_points_total);
-    ratio *= float(100);
+    ratio *= float(100.0);
     //float grade = (int) ratio;
     return ratio;
 }
