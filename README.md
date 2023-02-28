@@ -14,7 +14,7 @@ Runtime Instructions:
 
 Sample input/output screenshots with brief explanations of the images used:
 
-![1](https://github.com/[Jacooob3]/[CSC212ReviewProject]/blob/[main]/Proj1.PNG?raw=true)
-![2](https://github.com/[Jacooob3]/[CSC212ReviewProject]/blob/[main]/Proj2.PNG?raw=true)
-![3](https://github.com/[Jacooob3]/[CSC212ReviewProject]/blob/[main]/Proj3.PNG?raw=true)
-![4](https://github.com/[Jacooob3]/[CSC212ReviewProject]/blob/[main]/Proj4.PNG?raw=true)
+![1](https://github.com/Jacooob3/CSC212ReviewProject/blob/main/Proj1.PNG?raw=true)
+![2](https://github.com/Jacooob3/CSC212ReviewProject/blob/main/Proj2.PNG?raw=true)
+![3](https://github.com/Jacooob3/CSC212ReviewProject/blob/main/Proj3.PNG?raw=true)
+![4](https://github.com/Jacooob3/CSC212ReviewProject/blob/main/Proj4.PNG?raw=true)
