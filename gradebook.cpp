@@ -75,21 +75,21 @@ float GradeBook::get_assignment_points_total(std::string category_name)
     //grabs an index for the assignment so it can work for the switch statement
     int index;
     if(category_name == "Lab" or category_name == "lab"){
-       return 20.0;
+        return 20.0;
     }
     else if(category_name == "Assignment" or category_name == "assignment"){
-       return 50.0;
+        return 50.0;
     }
     else if(category_name == "Project1" or category_name == "project1"){
-       return 150.0;
+        return 150.0;
     }
     else if(category_name == "Project2" or category_name == "project2"){
-       return 350.0;
+        return 350.0;
     }
     else if(category_name == "Exam" or category_name == "exam"){
-       return 100.0;
+        return 100.0;
     }
-    
+
     return 1; //return 1 as opposed to return 0 as to avoid dividing by 0;
 }
 
@@ -292,11 +292,19 @@ void GradeBook::change_grade(std::string assignment_name, float new_grade) {
 }
 //prints out the whole gradebook to a file
 void GradeBook::printGradeBook(std::string file_name) {
-    std::ofstream myfile;
-    myfile.open(file_name);
-    myfile << "Assignment,Category,Grade" << "\n";
-    for (int i = 0; i < name.size(); i++) {
-        myfile << name[i] << "," << category[i] << "," << points_earned[i] << "\n";
+    if (file_name.size() == 0) {
+        std::cout << "Assignment, Category, Grade \n";
+        for (int i = 0; i < name.size(); i++) {
+            std::cout << name[i] << " , " << category[i] << " , " << points_earned[i] << "\n";
+        }
+    }
+    else {
+        std::ofstream myfile;
+        myfile.open(file_name);
+        myfile << "Assignment,Category,Grade" << "\n";
+        for (int i = 0; i < name.size(); i++) {
+            myfile << name[i] << "," << category[i] << "," << points_earned[i] << "\n";
+        }
     }
 }
 //prints out individual assignment grade to either terminal or file
