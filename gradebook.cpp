@@ -74,28 +74,22 @@ float GradeBook::get_assignment_points_total(std::string category_name)
     //const char* category_list[] = {"Lab", "Assignment", "Project1", "Project2", "Exam"};
     //grabs an index for the assignment so it can work for the switch statement
     int index;
-    for (int i = 0; i < unique_category.size(); i++)
-    {
-        if (unique_category[i] == category_name)
-        {
-            index = i;
-        }
+    if(category_name == "Lab" or category_name == "lab"){
+       return 20.0;
     }
-    switch(index)
-    {
-        case 0:
-            return 20.0;
-        case 1:
-            return 50.0;
-        case 2:
-            return 150.0;
-        case 3:
-            return 350.0;
-        case 4:
-            return 100.0;
-        default:
-            break;
+    else if(category_name == "Assignment" or category_name == "assignment"){
+       return 50.0;
     }
+    else if(category_name == "Project1" or category_name == "project1"){
+       return 150.0;
+    }
+    else if(category_name == "Project2" or category_name == "project2"){
+       return 350.0;
+    }
+    else if(category_name == "Exam" or category_name == "exam"){
+       return 100.0;
+    }
+    
     return 1; //return 1 as opposed to return 0 as to avoid dividing by 0;
 }
 
