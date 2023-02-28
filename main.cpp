@@ -33,7 +33,7 @@ void extractCSV(std::string file_name, GradeBook &Grade) {
         std::getline(ss, assignment_name, ',');
         std::getline(ss, category_name, ',');
         std::getline(ss, temp, ',');
-        num = stoi(temp);
+        float num = stoi(temp);
         Grade.points_earned_add_on(num);
         Grade.category_add_on(category_name);
         Grade.name_add_on(assignment_name);
@@ -85,7 +85,7 @@ int main() {
             } else if (inp == "ADD") {
                 std::string name;
                 std::string cat;
-                int grade;
+                float grade;
                 std::cout << "Enter assignment name: \n";
                 std::cin >> name;
                 Grade.name_add_on(name);
@@ -125,7 +125,7 @@ int main() {
                 std::string assignment_name;
                 std::cin >> assignment_name;
                 std::cout << "Enter new grade in %:";
-                int new_grade;
+                float new_grade;
                 std::cin >> new_grade;
                 Grade.change_grade(assignment_name, new_grade);
                 std::cout << "Reprint to see new grades" << "\n";
@@ -148,7 +148,7 @@ int main() {
             } else if (inp == "ADD") {
                 std::string name;
                 std::string cat;
-                int grade;
+                float grade;
                 std::cout << "Enter assignment name: \n";
                 std::cin >> name;
                 Grade.name_add_on(name);
@@ -184,7 +184,7 @@ int main() {
                 std::string assignment_name;
                 std::cin >> assignment_name;
                 std::cout << "Enter new grade in %:";
-                int new_grade;
+                float new_grade;
                 std::cin >> new_grade;
                 Grade.change_grade(assignment_name, new_grade);
                 Grade.printGradeBook(file_name);
