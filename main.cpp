@@ -3,6 +3,7 @@
 #include <fstream>
 #include <ostream>
 #include <sstream>
+#include <algorithm>
 #include "gradebook.h"
 //asks for the file to be opened and opens it
 std::string openFile(){
@@ -78,7 +79,7 @@ int main() {
         std::cout<<"If you want to print out your Gradebook enter 'print'\n";
         std::cout<<"If you want to quit, enter 'quit'\n";
         std::cin >> inp;
-        transform(inp.begin(), inp.end(), inp.begin(), ::toupper);
+        std::transform(inp.begin(), inp.end(), inp.begin(), ::toupper);
         if (out_bool) { //case if user wants terminal outputs
             std::string null_string = ""; //making an empty string that allows print methods to differentiate between terminal and file output
             if (inp == "ASSIGNMENT") {
