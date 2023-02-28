@@ -1,10 +1,17 @@
 ﻿Assignment,Category,Grade
-Lab1,Lab,80
-Lab2,Lab,80
-A02,Assignment,90
-Lab3,Lab,80
-Project1,Project1,85
-Lab4,Lab,80
-A03,Assignment,95
-Project2,Project2,95
-Exam,Exam,80
+Lab1,Lab,90
+Lab2,Lab,90
+A02,Assignment,85
+Lab3,Lab,85
+Project1,Project1,90
+Lab4,Lab,75
+A03,Assignment,60
+Lab5,Lab,55
+Project2,Project2,75
+Lab6,Lab,60
+Lab7,Lab,70
+Lab8,Lab,80
+A04,Assignment,65
+Lab9,Lab,55
+Lab10,Lab,50
+Exam,Exam, 85
