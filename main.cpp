@@ -75,6 +75,7 @@ int main() {
         std::cout<<"If you want to access your overall grade enter 'overall'\n";
         std::cout<<"If you want to change a grade enter 'changegrade'\n";
         std::cout<<"If you want to add grades to Gradebook enter 'add'\n";
+        std::cout<<"If you want to print out your Gradebook enter 'print'\n";
         std::cout<<"If you want to quit, enter 'quit'\n";
         std::cin >> inp;
         transform(inp.begin(), inp.end(), inp.begin(), ::toupper);
@@ -129,6 +130,8 @@ int main() {
                 std::cin >> new_grade;
                 Grade.change_grade(assignment_name, new_grade);
                 std::cout << "Reprint to see new grades" << "\n";
+            } else if (inp == "PRINT") {
+                Grade.printGradeBook(null_string);
             } else if (inp == "QUIT") {
                 boo = false;
             } else {
@@ -188,6 +191,8 @@ int main() {
                 std::cin >> new_grade;
                 Grade.change_grade(assignment_name, new_grade);
                 Grade.printGradeBook(file_name);
+            } else if (inp == "PRINT") {
+                Grade.printGradeBook(out_file);
             } else if (inp == "QUIT") {
                 boo = false;
             } else {
