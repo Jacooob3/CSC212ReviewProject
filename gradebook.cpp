@@ -7,12 +7,12 @@
 
 //default constructor
 GradeBook::GradeBook(){
-    std::vector<int> grades;
+    std::vector<float> grades;
     this -> size = 0;
 }
 
 //ideal constructor of the class. takes in the assignment name, category, and grade
-GradeBook::GradeBook (std::vector<std::string> category_vector, std::vector<std::string> name_vector, std::vector<int> points_earned_vector){
+GradeBook::GradeBook (std::vector<std::string> category_vector, std::vector<std::string> name_vector, std::vector<float> points_earned_vector){
     for (int i = 0; i < category_vector.size(); i++){
         this->category.push_back(category_vector[i]);
         this->name.push_back(name_vector[i]);
@@ -61,7 +61,7 @@ void GradeBook::name_add_on(std::string value)
 {
     this->name.push_back(value);
 }
-void GradeBook::points_earned_add_on(int value)
+void GradeBook::points_earned_add_on(float value)
 {
     this->points_earned.push_back(value);
 }
@@ -69,7 +69,7 @@ void GradeBook::points_earned_add_on(int value)
 //I made this function as it is impossible to use strings as cases of a switch statement
 //So this essentially assigns a number to each of the categories and returns the proper points_total for
 //an individual project of that category
-int GradeBook::get_assignment_points_total(std::string category_name)
+float GradeBook::get_assignment_points_total(std::string category_name)
 {
     //const char* category_list[] = {"Lab", "Assignment", "Project1", "Project2", "Exam"};
     //grabs an index for the assignment so it can work for the switch statement
@@ -118,7 +118,7 @@ void GradeBook::printAssignment(std::string file_name){
     if (file_name.size() == 0) { //code to output to terminal
         std::cout << "Assignment Totals:" << "\n";
         for (int i = 0; i < size; i++) {
-            std::pair<int, int> temp = individual_grade(ordered_list[i]);
+            std::pair<float, float> temp = individual_grade(ordered_list[i]);
             std::cout << ordered_list[i] << " " << temp.first << "/" << temp.second << "\t" << "or "
                       << turn_to_percentage(temp.first, temp.second) << "%" << "\n";
         }
@@ -128,7 +128,7 @@ void GradeBook::printAssignment(std::string file_name){
         myfile.open(file_name);
         myfile << "Assignment , Grade" << "\n";
         for (int i = 0; i < size; i++) {
-            std::pair<int, int> temp = individual_grade(ordered_list[i]);
+            std::pair<float, float> temp = individual_grade(ordered_list[i]);
             myfile << ordered_list[i] << " , " << temp.first << "/" << temp.second << "\t" << "or "
                    << turn_to_percentage(temp.first, temp.second) << "%" << "\n";
         }
@@ -182,7 +182,7 @@ void GradeBook::printOverall(std::string file_name, int condition){
             myfile.open(file_name);
             myfile << "Assignment , Grade" << "\n";
             for (int i = 0; i < size; i++) {
-                std::pair<int, int> temp = individual_grade(ordered_list[i]);
+                std::pair<float, float> temp = individual_grade(ordered_list[i]);
                 myfile << ordered_list[i] << " , " << temp.first << "/" << temp.second << "\t" << "or "
                        << turn_to_percentage(temp.first, temp.second) << "%" << "\n";
             }
@@ -216,11 +216,11 @@ void GradeBook::printOverall(std::string file_name, int condition){
     }
 }
 
-std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
+std::pair<float, float> GradeBook::individual_grade(std::string individual_name)
 {
     //we need to create an index so we can get the matching category and points_earned
     int index = 0;
-    int individual_points_total = 0;
+    float individual_points_total = 0;
     for (int i = 0; i < name.size(); i++) //idk why it says the i++ part is unreachable code
     {
         if (name[i] == individual_name)
@@ -230,16 +230,16 @@ std::pair<int, int> GradeBook::individual_grade(std::string individual_name)
 
             float individual_points_earned = individual_points_total*(points_earned[index]/float(100.0));
 
-            return std::make_pair((int(individual_points_earned)),individual_points_total);
+            return std::make_pair((float(individual_points_earned)),individual_points_total);
         }
 
     }
 }
 //adds up scores of all assignments in a certain category
-std::pair<int, int> GradeBook::category_grade(std::string individual_category)
+std::pair<float, float> GradeBook::category_grade(std::string individual_category)
 {
-    int total_points_earned = 0;
-    std::vector<int> scores_per_category; //basically every points_earned value from a category;
+    float total_points_earned = 0;
+    std::vector<float> scores_per_category; //basically every points_earned value from a category;
     for (int i = 0; i < points_earned.size(); i++)
     {
         if (category[i] == individual_category)
@@ -256,17 +256,17 @@ std::pair<int, int> GradeBook::category_grade(std::string individual_category)
     float category_percent = float(total_points_earned)/float((100.0*scores_per_category.size())); //turning points earned in a category into percentage
     category_points_total*= scores_per_category.size(); //making sure the total points cover every project of that category;
     //std::cout << category_percent << "\n";
-    int category_points = category_percent*float(category_points_total); //turning that percentage into points earned out of category total
+    float category_points = category_percent*float(category_points_total); //turning that percentage into points earned out of category total
 
     return std::make_pair(category_points,category_points_total);
 }
 
 //will essentially run the sum of category_grade for every category
-std::pair<int, int> GradeBook::course_total_grade()
+std::pair<float, float> GradeBook::course_total_grade()
 {
     //const char* category_list[] = {"Lab", "Assignment", "Project1", "Project2", "Exam"};
-    std::pair<int, int> total_course_score; //first is points_earned, and second is points_total
-    std::pair<int, int> individual_category_score;
+    std::pair<float, float> total_course_score; //first is points_earned, and second is points_total
+    std::pair<float, float> individual_category_score;
     total_course_score.first = 0;
     total_course_score.second = 0;
     for (int i = 0; i < unique_category.size(); i++)
@@ -279,7 +279,7 @@ std::pair<int, int> GradeBook::course_total_grade()
 
 }
 //turns a set of points_earned and points_total into a percentage
-float GradeBook::turn_to_percentage(int grade_points_earned, int grade_points_total)
+float GradeBook::turn_to_percentage(float grade_points_earned, float grade_points_total)
 {
     float ratio = float(grade_points_earned) / float(grade_points_total);
     ratio *= float(100.0);
@@ -287,7 +287,7 @@ float GradeBook::turn_to_percentage(int grade_points_earned, int grade_points_to
     return ratio;
 }
 //changes the grade of a given assignment to the given grade
-void GradeBook::change_grade(std::string assignment_name, int new_grade) {
+void GradeBook::change_grade(std::string assignment_name, float new_grade) {
     for (int i = 0; i < name.size(); i++) {
         if (name[i] == assignment_name) {
             this->points_earned[i] = new_grade;
