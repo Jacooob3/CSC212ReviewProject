@@ -234,6 +234,7 @@ std::pair<float, float> GradeBook::individual_grade(std::string individual_name)
         }
 
     }
+    return std::make_pair(NULL, NULL);
 }
 //adds up scores of all assignments in a certain category
 std::pair<float, float> GradeBook::category_grade(std::string individual_category)
