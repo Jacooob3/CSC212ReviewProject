@@ -13,3 +13,7 @@ Runtime Instructions:
   During runtime, the program will first ask for a file name. It will then search the directory you are currently in and search for the given file (you have to include .csv at the end of the name). If it is not able to find it, it will ask again just in case you might have incorrectly typed it in. Then the program will ask if you would like to view your grades through the terminal or output it to a file. Then, the program will give you a list of choices where you can view your grades individually, categorically, overall, add or change your grades, print your grades or you can quit the program. Depending on the choice the user made on the ouput, the program will either print your output onto the file or the terminal and would add or change your grades directly to your input file.
 
 Sample input/output screenshots with brief explanations of the images used:
+![1](relative%20path/to/img.jpg?raw=true "Proj1")
+![2](relative%20path/to/img.jpg?raw=true "Proj2")
+![3](relative%20path/to/img.jpg?raw=true "Proj3")
+![4](relative%20path/to/img.jpg?raw=true "Proj4")
